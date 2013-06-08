@@ -1,8 +1,18 @@
-# Case01 - Pressure Test Case , add 10 contacts #
+# Case01 - Pressure Test Case , add AddContactsNum contacts #
 #     preconditions:  Phone already has at least one contact #
+
+# Verison         : 0.1
+# Date            : 2013.06.07
+# Author          : Robin Zhang <askpepsi88@gmail.com>
+# Description     : create addContact_Case01 case , it's for add contacts pressure test.
 
 from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice, MonkeyImage
 import datetime
+
+
+AddContactsNum = 5
+CaseResultCount = 0
+
 
 # connecting device #
 try:
@@ -23,8 +33,6 @@ MonkeyRunner.sleep(5)
 
 
 # add contact #
-AddContactsNum = 5
-CaseResultCount = 0
 for i in range(AddContactsNum):
     try:
         # shot Ref Image and save #
@@ -74,6 +82,7 @@ for i in range(AddContactsNum):
         MonkeyRunner.sleep(3)
         device.startActivity(component = 'com.android.contacts/.activities.PeopleActivity')
         MonkeyRunner.sleep(5)
+
 
 # judge Case01 pass or not #        
 if CaseResultCount== AddContactsNum:
